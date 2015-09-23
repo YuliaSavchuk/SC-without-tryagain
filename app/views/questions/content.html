@@ -1,0 +1,37 @@
+﻿<section id="content" class="question unselectable">
+    <div>
+        <header class="page-header">
+            <div class="navigation-home-link-wrapper" data-bind="click: backToObjectives">
+                <div class="navigation-home-link" data-bind="css: { disabled: isNavigationLocked }"></div>
+            </div>
+            <div class="objective-progress-wrapper">
+                <div class="objective-image-wrapper" data-bind="style: { 'background-image': 'url(' + objective.imageUrl + ')' }">
+                    <!-- ko if: objective.affectProgress -->
+                    <div class="objectives-canvas-wrapper">
+                        <canvas class="canvas-styles" width="92" height="92" data-bind="circleProgress: { progress: objective.score(), masteryScore:masteryScore,lineWidth:2 },toolTip:{progress: objective.score(), masteryScore:masteryScore}"></canvas>
+                    </div>
+                    <span class="progress-text" data-bind="text: objective.score() + '%'"></span>
+
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="objective-info">
+                <span data-bind="text: objective.title">objective title</span>
+
+            </div>
+            <div class="questions-navigation-container">
+                <div class="question-navigation-bar">
+                    <a class="previous" data-bind="attr: { href: previousQuestionUrl(), title: 'previous'},css:{disabled : !isPreviousQuestionAvailable()}" data-translate-title="[previous question]">&nbsp;</a>
+                    <span class="navigation-progress"><span data-bind="text: navigationContext.currentQuestionIndex + ' '"></span><span>/</span><span data-bind="text: ' ' + navigationContext.questionsCount"></span></span>
+                    <a class="next" data-bind="attr: { href: nextQuestionUrl(), title: 'next' }, css:{disabled: !isNextQuestionAvailable() }" data-translate-title="[next question]">&nbsp;</a>
+                </div>
+            </div>
+        </header>
+        <!-- ko compose: { model: activeViewModel, activationData: [ objective.id, question ] } --><!-- /ko -->
+    </div>
+    <div class="question-navigation-bar" style="float:right">
+        <a class="previous" data-bind="attr: { href: previousQuestionUrl(), title: 'previous'},css:{disabled : !isPreviousQuestionAvailable()}" data-translate-title="[previous question]">&nbsp;</a>
+        <span class="navigation-progress"><span data-bind="text: navigationContext.currentQuestionIndex + ' '"></span><span>/</span><span data-bind="text: ' ' + navigationContext.questionsCount"></span></span>
+        <a class="next" data-bind="attr: { href: nextQuestionUrl(), title: 'next' }, css:{disabled: !isNextQuestionAvailable() }" data-translate-title="[next question]">&nbsp;</a>
+    </div>
+</section>

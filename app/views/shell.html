@@ -1,0 +1,37 @@
+﻿<div class="header clearfix" data-bind="css: 'module-' + cssName()">
+    <section class="header-items-holder">
+        <span class="logo-img">
+            <!-- ko if: viewSettings().rootLinkEnabled  -->
+            <!-- ko if: logoUrl -->
+            <a href="#objectives">
+                <img alt="" src="" data-bind="attr: { src: logoUrl }">
+            </a>
+            <!-- /ko -->
+            <!-- ko ifnot: logoUrl -->
+            <a href="#objectives">
+                <span class="default-logo"></span>
+            </a>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: viewSettings().rootLinkEnabled -->
+            <!-- ko if: logoUrl -->
+            <img alt="" src="" data-bind="attr: { src: logoUrl }">
+            <!-- /ko -->
+            <!-- ko ifnot: logoUrl -->
+            <span class="default-logo"></span>
+            <!-- /ko -->
+            <!-- /ko -->
+        </span>
+        <div class="exit-course-container">
+            <!-- ko if: viewSettings().exitButtonVisible -->
+            <!-- ko compose: 'viewmodels/exitCourse' --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+    </section>
+</div>
+<section id="content" class="content-wrapper">
+    <!--ko router: { cacheViews: false, transition: 'entrance' }-->
+    <!--/ko-->
+</section>
+<div class="blockout" data-bind="css: { active: isClosed }"></div>
+<div data-bind="widget: {kind:'imagePreview'}"></div>
