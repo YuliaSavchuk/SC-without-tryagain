@@ -13,7 +13,7 @@
                 scope: scope,
                 revert: 'invalid',
                 helper: 'clone',
-                cursorAt: { left: 10, top: 15 },
+                cursorAt: { left: 0, top: 13 },
                 start: function () {
                     $element.css({ visibility: 'hidden' });
                 },
