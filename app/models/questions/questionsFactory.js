@@ -59,8 +59,7 @@
                 case constants.questionTypes.openQuestion:
                     return new OpenQuestion(questionData);
                 default:
-                    questionData.answers = question.answers;
-                    return new MultipleSelectQuestion(questionData);
+                    return null;
             }
         }
 
