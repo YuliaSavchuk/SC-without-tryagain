@@ -5,11 +5,13 @@
         content: null,
         isAnswered: ko.observable(false),
 
+        values: [],
+
         sources: ko.observableArray([]),
         targets: ko.observableArray([]),
 
         submit: submit,
- 
+
         initialize: initialize
     };
 
@@ -32,11 +34,17 @@
             viewModel.content = question.content;
             viewModel.isAnswered(question.isAnswered);
 
+            viewModel.values = _.chain(question.answers)
+                .map(function (answer) {
+                    return answer.value;
+                })
+                .shuffle()
+                .value();
 
             var targets = [];
 
-            _.each(question.answers, function (pair) {
-                targets.push(new Target(pair.value));
+            _.each(viewModel.values, function (value) {
+                targets.push(new Target(value));
             });
 
             var sources = [];
@@ -56,7 +64,7 @@
                 sources.push(source);
             });
 
-            viewModel.targets(_.shuffle(targets));
+            viewModel.targets(targets);
             viewModel.sources(_.shuffle(sources));
         });
     }
@@ -70,4 +78,4 @@
             viewModel.isAnswered(true);
         });
     }
- });
+});
